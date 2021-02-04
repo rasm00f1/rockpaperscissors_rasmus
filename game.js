@@ -1,12 +1,15 @@
 // Start game when page is loaded
 document.addEventListener("DOMContentLoaded", start);
 
+//initial choice variables
 let playerChoice;
 let computerChoice;
 
+//initial player & computer sprite variables
 let playerHand = document.querySelector("#player1");
 let computerHand = document.querySelector("#player2");
 
+//set gameplay buttons = to rock, paper, scissors
 let rock = document.querySelector("button.rock");
 let paper = document.querySelector("button.paper");
 let scissors = document.querySelector("button.scissors");
@@ -22,6 +25,7 @@ function start() {
 
 }
 
+//restart the game
 function restartGame() {
     
     document.querySelector("#win").classList.add("hidden");
@@ -39,6 +43,7 @@ function restartGame() {
     scissors.addEventListener("click", getPlayerChoice);
 }
 
+//remove eventlisteners and set playerChoice = to the clicked element
 function getPlayerChoice() {
     console.log();
 
@@ -52,6 +57,7 @@ function getPlayerChoice() {
     getComputerSelectionRandom();
 }
 
+//set computerChoice to a random number from 0-2
 function getComputerSelectionRandom() {
     console.log("random computer selection");
 
@@ -61,6 +67,7 @@ function getComputerSelectionRandom() {
     convertComputerSelectionRandom();
 }
 
+//sets changes corrsponding number to either rock, paper or scissors
 function convertComputerSelectionRandom() {
     if (computerChoice == 0) {
         computerChoice = "rock";
@@ -76,6 +83,7 @@ function convertComputerSelectionRandom() {
     showAnimations();
 }
 
+//add the class for the gameplay animation
 function showAnimations() {
 
     playerHand.classList.add("shake");
@@ -87,6 +95,7 @@ function showAnimations() {
 
 }
 
+//change sprite for the hands so they correspond with the chosen option
 function newSprite() {
 
     if (playerChoice == rock) {
@@ -118,10 +127,11 @@ function newSprite() {
     determineWinner();
 }
 
+//determine winner based on the choices made by player and computer
 function determineWinner() {
     console.log("determine winner");
 
-    // if player won
+    // options if player chose rock
     if (playerChoice == rock && computerChoice == "rock") {
         showDraw();
     } 
@@ -133,6 +143,8 @@ function determineWinner() {
     if (playerChoice == rock && computerChoice == "scissors") {
         showWin();
     }
+
+    //options if player chose paper
     if (playerChoice == paper && computerChoice == "rock") {
         showWin();
     } 
@@ -144,6 +156,8 @@ function determineWinner() {
     if (playerChoice == paper && computerChoice == "scissors") {
         showLoss();
     }
+
+    //options if player chose scissors
     if (playerChoice == scissors && computerChoice == "rock") {
         showLoss();
     } 
@@ -157,6 +171,7 @@ function determineWinner() {
     }
 }
 
+//removes hide from the winning text and makes restart available
 function showWin() {
     console.log("show win");
 
@@ -164,6 +179,7 @@ function showWin() {
     document.querySelector("#win").addEventListener("click", restartGame);   
 }
 
+//removes hide from the winning text and makes restart available
 function showLoss() {
     console.log("show loss");
 
@@ -171,6 +187,7 @@ function showLoss() {
     document.querySelector("#lose").addEventListener("click", restartGame);
 }
 
+//removes hide from the winning text and makes restart available
 function showDraw() {
     console.log("show draw");
 
